@@ -1,3 +1,4 @@
 global ports 
-    prometheus = 7070
-    cadvisor = 7071
+    grafana = 7070
+    prometheus = 7071
+    cadvisor = 7072

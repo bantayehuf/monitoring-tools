@@ -1,7 +1,6 @@
 version: "3.9"
 
 services:
-
   grafana:
     image: grafana/grafana:9.5.2
     container_name: grafana
@@ -52,6 +51,9 @@ services:
         monitoring-tools:
           ipv4_address: 190.190.20.12
     restart: on-failure:5
+
+
+
 
 networks:
   monitoring-tools:
