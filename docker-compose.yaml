@@ -1,0 +1,71 @@
+version: "3.9"
+
+services:
+
+  grafana:
+    image: grafana/grafana:9.5.2
+    container_name: grafana
+    profiles: ["grafana"]
+    ports:
+      - 7070:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+        monitoring-tools:
+          ipv4_address: 190.190.20.10
+    restart: on-failure:5
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    profiles: ["prom"]
+    ports: 
+        - 7071:9090
+    volumes:
+        - prometheus-data:/prometheus
+        - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml:ro
+        - ./prometheus/web.yaml:/etc/prometheus/web.yml:ro
+    networks:
+        monitoring-tools:
+          ipv4_address: 190.190.20.11
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--web.config.file=/etc/prometheus/web.yml"
+    restart: on-failure:5
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    profiles: ["cadvisor"]
+    ports:
+    - 7072:8080
+    volumes:
+      - /:/rootfs:ro
+      - /dev/disk/:/dev/disk:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    privileged: true
+    devices:
+      - "/dev/kmsg:/dev/kmsg"
+    networks:
+        monitoring-tools:
+          ipv4_address: 190.190.20.12
+    restart: on-failure:5
+
+networks:
+  monitoring-tools:
+    name: monitoring-tools
+    external: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 190.190.20.0/24
+
+volumes:
+  grafana-data:
+    name: "monitoring-tools-grafana-data"
+    driver: local
+  prometheus-data:
+    name: "monitoring-tools-prometheus-data"
+    driver: local

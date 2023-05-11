@@ -1,0 +1,3 @@
+basic_auth_users:
+  # On real/production configuration screets should be stored here 
+  ob: "$2b$12$udd9FbEzIU0ON6vFh8vxqOb1eyGlQxvSYwOitkxTE0NK5pIPolt5e"
