@@ -15,7 +15,7 @@ services:
     restart: on-failure:5
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.44.0
     container_name: prometheus
     profiles: ["prom"]
     ports: 
@@ -36,8 +36,8 @@ services:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     profiles: ["cadvisor"]
-    ports:
-    - 7072:8080
+    # ports:
+    # - 7072:8080
     volumes:
       - /:/rootfs:ro
       - /dev/disk/:/dev/disk:ro
@@ -50,6 +50,19 @@ services:
     networks:
         monitoring-tools:
           ipv4_address: 190.190.20.12
+    restart: on-failure:5
+
+  zipkin:
+    image: openzipkin/zipkin:2.24
+    container_name: zipkin
+    profiles: ["zipkin"]
+    ports:
+      - 7073:9411
+    volumes:
+      - zipkin-data:/zipkin
+    networks:
+        monitoring-tools:
+          ipv4_address: 190.190.20.13
     restart: on-failure:5
 
   # node_exporter:
@@ -83,4 +96,7 @@ volumes:
     driver: local
   prometheus-data:
     name: "monitoring-tools-prometheus-data"
+    driver: local
+  zipkin-data:
+    name: "monitoring-tools-zipkin-data"
     driver: local

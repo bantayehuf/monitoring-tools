@@ -2,3 +2,4 @@ global ports
     grafana = 7070
     prometheus = 7071
     cadvisor = 7072
+    zipkin = 7073

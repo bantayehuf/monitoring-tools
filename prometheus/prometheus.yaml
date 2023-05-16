@@ -1,5 +1,5 @@
 global:
-  scrape_interval:  5s
+  scrape_interval:  10s
 
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
@@ -32,9 +32,9 @@ scrape_configs:
       - targets:  ['host.docker.internal:6060']
         labels:
           application: "cbs_gateway_service"
-    basic_auth:
-      username: ob
-      password: ob123
+    # basic_auth:
+    #   username: ob
+    #   password: ob123
 
   - job_name: customer-onboarding-service
     metrics_path: "/actuator/prometheus"
