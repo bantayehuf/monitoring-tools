@@ -12,11 +12,11 @@ scrape_configs:
       - targets:  ['190.190.20.12:8080']
 
   - job_name: 'kong_gateway'
-    scheme: https
-    tls_config:
-      insecure_skip_verify: true
+    # scheme: https
+    # tls_config:
+    #   insecure_skip_verify: true
     static_configs:
-      - targets: ['host.docker.internal:8444']
+      - targets: ['host.docker.internal:8001']
     
   - job_name: 'node_exporter'
     static_configs:
