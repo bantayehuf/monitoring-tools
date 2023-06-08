@@ -12,6 +12,8 @@ services:
     networks:
         monitoring-tools:
           ipv4_address: 190.190.20.10
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: on-failure:5
 
   prometheus:
@@ -27,6 +29,8 @@ services:
     networks:
         monitoring-tools:
           ipv4_address: 190.190.20.11
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--web.config.file=/etc/prometheus/web.yml"
@@ -50,6 +54,8 @@ services:
     networks:
         monitoring-tools:
           ipv4_address: 190.190.20.12
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: on-failure:5
 
   zipkin:
@@ -63,6 +69,8 @@ services:
     networks:
         monitoring-tools:
           ipv4_address: 190.190.20.13
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: on-failure:5
 
   # node_exporter:
