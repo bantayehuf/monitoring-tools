@@ -9,7 +9,11 @@ The set of containerized monitoring tools
 
 ## How to start
 It is configured using docker-compose
-  -bash: docker compose --profile <profile-name> up -d
+```sh
+docker compose --profile <profile-name> up -d
+```
+
 e.g. To start Zipkin
-  -bash: docker compose --profile zipkin up -d 
-  $ hello?
+```sh
+docker compose --profile zipkin up -d 
+```
