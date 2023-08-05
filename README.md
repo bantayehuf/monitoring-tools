@@ -1,5 +1,5 @@
 # monitoring-tools
-The set of containerized monitoring tools
+The set of containerized system monitoring tools
 
 ## Included tools
 - Grafana https://grafana.com/
@@ -8,7 +8,12 @@ The set of containerized monitoring tools
 - Zipkin https://zipkin.io/
 
 ## How to start
-It is configured using docker-compose
+Clone repository
+```sh
+git clone https://github.com/bantayehuf/monitoring-tools
+```
+
+Start service
 ```sh
 docker compose --profile <profile-name> up -d
 ```
