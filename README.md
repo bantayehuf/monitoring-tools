@@ -12,4 +12,4 @@ It is configured using docker-compose
   -bash: docker compose --profile <profile-name> up -d
 e.g. To start Zipkin
   -bash: docker compose --profile zipkin up -d 
-$ hello?
+  $ hello?
