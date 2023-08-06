@@ -1,3 +1,7 @@
-basic_auth_users:
-  # On real/production configuration screets should be stored here (ob123)
-  ob: "$2b$12$udd9FbEzIU0ON6vFh8vxqOb1eyGlQxvSYwOitkxTE0NK5pIPolt5e"
+# Adding basic authentication for web interface, 
+# You can set the the authentication configurations bellow
+# You can use python/password.py to generate the hashed password
+
+# basic_auth_users:
+#   # On real/production configuration screets should be stored here (ob123)
+#   ab: "$2b$12$udd9FbEzIU0ON6vFh8vxqOb1eyGlQxvSYwOitkxTE0NK5pIPolt5e"

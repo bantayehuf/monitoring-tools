@@ -13,7 +13,7 @@ Clone repository
 git clone https://github.com/bantayehuf/monitoring-tools
 ```
 
-Start service
+Start services
 ```sh
 docker compose --profile <profile-name> up -d
 ```
@@ -22,3 +22,6 @@ e.g. To start Zipkin
 ```sh
 docker compose --profile zipkin up -d 
 ```
+
+## Prometheus configuration
+The Prometheus configuration files are located in the prometheus folder. You can configure them as needed.
